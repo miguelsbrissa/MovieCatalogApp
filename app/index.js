@@ -35,7 +35,7 @@ const Home = () => {
         <View style={contentWrapper}>
           <HorizontalList title={'Recommended'}/>
           <MultiHorizontalList categories={['Popular', 'Action', 'Drama']}/>
-          <HorizontalList title={'Recommended'}/>
+          <HorizontalList title={'Upcoming Movies'}/>
         </View>
       </ScrollView>
     </SafeAreaView>
