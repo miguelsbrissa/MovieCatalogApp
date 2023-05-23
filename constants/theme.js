@@ -7,7 +7,8 @@ const COLORS = {
     gray2: '#f1f1f1',
     gray3: '#bababa',
   
-    white: '#ffffff'
+    white: '#ffffff',
+    black: '#000000'
   }
   
   const FONT = {
