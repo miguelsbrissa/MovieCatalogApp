@@ -11,15 +11,15 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.black,
     color: COLORS.white,
     width: '60%',
-    height: '80%',
-    padding: SIZES.small,
+    height: SIZES.xLarge*2,
+    padding: SIZES.xSmall,
     opacity: 0.5,
     marginVertical: SIZES.small
   },
   iconWrapper: (borderSide) => ({
     backgroundColor: COLORS.black,
     opacity: 0.5,
-    height: '80%',
+    height: SIZES.xLarge*2,
     paddingHorizontal: SIZES.xSmall,
     borderTopLeftRadius: borderSide === 'left' ? SIZES.large : 0,
     borderBottomLeftRadius: borderSide === 'left' ? SIZES.large : 0,
