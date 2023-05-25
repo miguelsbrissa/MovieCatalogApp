@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     homeHeaderWrapper:{
         backgroundColor: COLORS.primary,
         borderRadius: SIZES.large,
-        height: '40%'
+        height: 120
     },
     contentWrapper:{
         flex: 1

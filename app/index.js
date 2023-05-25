@@ -4,10 +4,15 @@ import { Stack, useRouter } from 'expo-router'
 import styles from '../styles/style'
 import { COLORS, SIZES } from '../constants'
 import { Feather } from '@expo/vector-icons'
-import { Welcome, SearchBarHeader, HorizontalList, MultiHorizontalList } from '../components'
+import {
+  Welcome,
+  SearchBarHeader,
+  HorizontalList,
+  MultiHorizontalList
+} from '../components'
 
 const Home = () => {
-  const { homeHeaderWrapper, contentWrapper} = styles
+  const { homeHeaderWrapper, contentWrapper } = styles
   return (
     <SafeAreaView>
       <Stack.Screen
@@ -33,9 +38,9 @@ const Home = () => {
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={contentWrapper}>
-          <HorizontalList title={'Recommended'}/>
-          <MultiHorizontalList categories={['Popular', 'Action', 'Drama']}/>
-          <HorizontalList title={'Upcoming Movies'}/>
+          <HorizontalList title={'Recommended'} />
+          <MultiHorizontalList categories={['Popular', 'Action', 'Drama']} />
+          <HorizontalList title={'Upcoming Movies'} />
         </View>
       </ScrollView>
     </SafeAreaView>
