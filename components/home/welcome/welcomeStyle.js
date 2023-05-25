@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.primary,
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
     },
     textGreet: {
         fontFamily: FONT.regular,
