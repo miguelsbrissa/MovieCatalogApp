@@ -4,15 +4,8 @@ import { Card } from './../../../components'
 import { SIZES } from '../../../constants'
 import styles from './horizontalListStyle'
 
-const HorizontalList = ({ title }) => {
+const HorizontalList = ({ title, data}) => {
   const { container, titleName } = styles
-  const imgMovies = [
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg'
-  ]
 
   return (
     <View style={container}>
@@ -20,9 +13,10 @@ const HorizontalList = ({ title }) => {
       <FlatList
         horizontal
         contentContainerStyle={{ columnGap: SIZES.medium }}
-        data={imgMovies}
+        data={data}
         renderItem={({ item }) => <Card item={item} />}
         showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
       />
     </View>
   )
