@@ -1,5 +1,11 @@
 import React from 'react'
-import { View, Text, SafeAreaView, ScrollView, TextInput } from 'react-native'
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  ActivityIndicator
+} from 'react-native'
 import { Stack, useRouter } from 'expo-router'
 import styles from '../styles/style'
 import { COLORS, SIZES } from '../constants'
@@ -10,9 +16,15 @@ import {
   HorizontalList,
   MultiHorizontalList
 } from '../components'
+import useFetch from '../hooks/useFetch'
 
 const Home = () => {
   const { homeHeaderWrapper, contentWrapper } = styles
+  const { data, isLoading, refetch, error } = useFetch('titles', {
+    year: '2020',
+    list: 'most_pop_movies'
+  })
+
   return (
     <SafeAreaView>
       <Stack.Screen
@@ -36,11 +48,16 @@ const Home = () => {
         <Welcome name={'Luke Skywalker'} />
         <SearchBarHeader />
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} scrollEnabled>
         <View style={contentWrapper}>
-          <HorizontalList title={'Recommended'} />
-          <MultiHorizontalList categories={['Popular', 'Action', 'Drama']} />
-          <HorizontalList title={'Upcoming Movies'} />
+          {isLoading ? (
+            <ActivityIndicator size={'large'} color={COLORS.primary} />
+          ) : error ? (
+            <Text>Something went wrong!</Text>
+          ) : (
+            <HorizontalList title={'Recommended'} data={data.results}/>
+          )}
+          
         </View>
       </ScrollView>
     </SafeAreaView>
