@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     borderRadius: SIZES.medium,
     justifyContent: 'space-between',
     width: 200,
-    height: 150,
+    height: 250,
     backgroundColor: COLORS.gray,
     padding: SIZES.xSmall,
     alignItems: 'center'
