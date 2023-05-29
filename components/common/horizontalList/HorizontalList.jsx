@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, FlatList } from 'react-native'
-import { Card } from './../../../components'
+import Card from '../card/Card'
 import { SIZES } from '../../../constants'
 import styles from './horizontalListStyle'
 
