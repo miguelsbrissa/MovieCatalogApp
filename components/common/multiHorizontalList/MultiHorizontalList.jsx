@@ -1,27 +1,42 @@
-import React, { useState } from 'react'
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import React, { useCallback, useState } from 'react'
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator
+} from 'react-native'
 import styles from './multiHorizontalListStyle'
 import Card from '../card/Card'
-import { SIZES } from '../../../constants'
+import { COLORS, SIZES } from '../../../constants'
+import useFetch from '../../../hooks/useFetch'
 
 const MultiHorizontalList = ({ categories }) => {
-  const imgMovies = [
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg',
-    'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_.jpg'
-  ]
-  const catMovies = ['Popular', 'Action', 'Comedy', 'Drama', 'Romance']
   const { container, catMovieName } = styles
-  const [activeMovieCat, setActiveMovieCat] = useState('Popular')
+  const [activeMovieCat, setActiveMovieCat] = useState(categories[0])
+  const {
+    data: dataMovieByCat,
+    isLoading: isLoadingMovieByCat,
+    refetch: refetchMovieByCat,
+    error: errorMovieByCat
+  } = useFetch('titles/', {
+    genre: activeMovieCat,
+    titleType: 'movie',
+    list: 'most_pop_movies',
+    startYear: '2010'
+  })
 
   return (
     <View style={container}>
       <FlatList
-        data={catMovies}
+        data={categories}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => setActiveMovieCat(item)}>
+          <TouchableOpacity
+            onPress={() => {
+              setActiveMovieCat(item)
+              refetchMovieByCat()
+            }}
+          >
             <Text style={catMovieName(activeMovieCat, item)}>{item}</Text>
           </TouchableOpacity>
         )}
@@ -30,14 +45,20 @@ const MultiHorizontalList = ({ categories }) => {
         horizontal
         showsHorizontalScrollIndicator={false}
       />
-      <FlatList
-        horizontal
-        contentContainerStyle={{ columnGap: SIZES.medium }}
-        data={imgMovies}
-        renderItem={({ item }) => <Card item={item} />}
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item}
-      />
+      {isLoadingMovieByCat ? (
+        <ActivityIndicator size={'large'} color={COLORS.primary} />
+      ) : errorMovieByCat ? (
+        <Text>Something went wrong!</Text>
+      ) : (
+        <FlatList
+          horizontal
+          contentContainerStyle={{ columnGap: SIZES.medium }}
+          data={dataMovieByCat.results}
+          renderItem={({ item }) => <Card item={item} />}
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+        />
+      )}
     </View>
   )
 }
