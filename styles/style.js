@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
         height: 120
     },
     contentWrapper:{
-        flex: 1
+        flex: 1,
+        paddingBottom: 120
     }
 })
 
