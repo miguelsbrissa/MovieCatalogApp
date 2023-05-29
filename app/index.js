@@ -20,11 +20,37 @@ import useFetch from '../hooks/useFetch'
 
 const Home = () => {
   const { homeHeaderWrapper, contentWrapper } = styles
-  const { data, isLoading, refetch, error } = useFetch('titles', {
-    year: '2020',
+  const {
+    data: dataPopularMovies,
+    isLoading: isLoadingPopularMovies,
+    //refetch: refetchPopularMovies,
+    error: errorPopularMovies
+  } = useFetch('titles', {
+    startYear: '2020',
     list: 'most_pop_movies'
   })
-
+  const {
+    data: dataUpcomingMovies,
+    isLoading: isLoadingUpcomingMovies,
+    //refetch: refetchUpcomingMovies,
+    error: errorUpcomingMovies
+  } = useFetch('titles/x/upcoming', {
+    titleType: 'movie',
+    sort: 'year.incr',
+    startYear: '2023'
+  })
+  const catMovies = [
+    'Sci-Fi',
+    'Action',
+    'Comedy',
+    'Drama',
+    'Horror',
+    'Romance',
+    'Family',
+    'War',
+    'Western',
+    'Crime'
+  ]
   return (
     <SafeAreaView>
       <Stack.Screen
@@ -48,16 +74,29 @@ const Home = () => {
         <Welcome name={'Luke Skywalker'} />
         <SearchBarHeader />
       </View>
-      <ScrollView showsVerticalScrollIndicator={false} scrollEnabled>
+      <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
         <View style={contentWrapper}>
-          {isLoading ? (
+          {isLoadingPopularMovies ? (
             <ActivityIndicator size={'large'} color={COLORS.primary} />
-          ) : error ? (
+          ) : errorPopularMovies ? (
             <Text>Something went wrong!</Text>
           ) : (
-            <HorizontalList title={'Recommended'} data={data.results}/>
+            <HorizontalList
+              title={'Recommended'}
+              data={dataPopularMovies.results}
+            />
           )}
-          
+          <MultiHorizontalList categories={catMovies} />
+          {isLoadingUpcomingMovies ? (
+            <ActivityIndicator size={'large'} color={COLORS.primary} />
+          ) : errorUpcomingMovies ? (
+            <Text>Something went wrong!</Text>
+          ) : (
+            <HorizontalList
+              title={'Upcomoming'}
+              data={dataUpcomingMovies.results}
+            />
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
