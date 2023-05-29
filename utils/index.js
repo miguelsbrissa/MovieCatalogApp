@@ -1,11 +1,11 @@
-export const checkImageURL = (url) => {
-    if (!url) return false
+export const checkImageURL = (image) => {
+    if (image === null) return false
     else {
       const pattern = new RegExp(
         '^https?:\\/\\/.+\\.(png|jpg|jpeg|bmp|gif|webp)$',
         'i'
       )
-      return pattern.test(url)
+      return pattern.test(image.url)
     }
   }
   
