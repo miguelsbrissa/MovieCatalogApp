@@ -2,12 +2,16 @@ import React from 'react'
 import { Text, TouchableOpacity, Image } from 'react-native'
 import styles from './cardStyle'
 import { checkImageURL } from '../../../utils/index'
+import { useRouter } from 'expo-router'
 
 const Card = ({ item }) => {
   const { container, movieImg, movieTitle } = styles
-
+  const router = useRouter()
   return (
-    <TouchableOpacity style={container}>
+    <TouchableOpacity
+      style={container}
+      onPress={() => router.push(`movie-details/${item.id}`)}
+    >
       <Text style={movieTitle} numberOfLines={1}>
         {item.titleText.text}
       </Text>
