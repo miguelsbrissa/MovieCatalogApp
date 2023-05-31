@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { View, Text, Image } from 'react-native'
 import { COLORS, FONT, SIZES } from '../../../constants'
 import { checkImageURL } from '../../../utils'
 import { Feather } from '@expo/vector-icons'
 import styles from './headerStyle'
+import IconText from '../../common/iconText/IconText'
 
 const HeaderMovie = ({ data }) => {
   const {
@@ -31,20 +32,22 @@ const HeaderMovie = ({ data }) => {
           style={movieImg}
         />
         <View style={movieIconsWrapper}>
-          <View style={{ flexDirection: 'row', gap: SIZES.small }}>
-            <Feather name={'star'} size={SIZES.xLarge} color={COLORS.primary} />
-            <Text style={{ color: COLORS.gray3 }}>
-              {data.ratingsSummary.aggregateRating}/10 from IMDb
-            </Text>
-          </View>
-          <View style={{ flexDirection: 'row', gap: SIZES.small }}>
-            <Feather
-              name={'play-circle'}
-              size={SIZES.xLarge}
-              color={COLORS.primary}
-            />
-            <Text style={{ color: COLORS.gray3 }}>{data.runtime.seconds}</Text>
-          </View>
+          <IconText
+            iconName={'star'}
+            iconColor={COLORS.primary}
+            iconSize={SIZES.xLarge}
+            text={`${data.ratingsSummary.aggregateRating}/10 from IMDb`}
+            textColor={COLORS.gray3}
+            textSize={SIZES.small}
+          />
+          <IconText
+            iconName={'play-circle'}
+            iconColor={COLORS.primary}
+            iconSize={SIZES.xLarge}
+            text={data.runtime.seconds}
+            textColor={COLORS.gray3}
+            textSize={SIZES.small}
+          />
         </View>
       </View>
       <View style={synopsisWrapper}>
