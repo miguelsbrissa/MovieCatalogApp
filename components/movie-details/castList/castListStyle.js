@@ -5,7 +5,8 @@ import { COLORS, FONT, SIZES } from '../../../constants'
 const styles = StyleSheet.create({
     container:{
         flexDirection: 'column',
-        marginHorizontal: SIZES.medium
+        marginHorizontal: SIZES.medium,
+        flex: 1
     },
     titleName:{
         color: COLORS.tertiary,

@@ -26,7 +26,6 @@ const MovieDetails = () => {
     info: 'extendedCast'
   })
 
-  console.log(dataMovieCast.results)
   return (
     <SafeAreaView>
       <Stack.Screen
@@ -57,28 +56,26 @@ const MovieDetails = () => {
           )
         }}
       />
-      <View>
-        {isLoadingMovieDetail || isLoadingMovieCast ? (
-          <ActivityIndicator size={'large'} color={COLORS.primary} />
-        ) : errorMovieDetail || errorMovieCast ? (
-          <Text>Something went wrong!</Text>
-        ) : dataMovieDetail.results === undefined ||
-          dataMovieCast.results === undefined ? (
-          <ActivityIndicator size={'large'} color={COLORS.primary} />
-        ) : (
-          <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
-            <View style={{flexDirection: 'column', paddingBottom: '100%'}}>
-              <HeaderMovie data={dataMovieDetail.results} />
-              <CastList
-                data={dataMovieCast.results.cast}
-                title={'Cast'}
-                widthCard={150}
-                heightCard={200}
-              />
-            </View>
-          </ScrollView>
-        )}
-      </View>
+      {isLoadingMovieDetail || isLoadingMovieCast ? (
+        <ActivityIndicator size={'large'} color={COLORS.primary} />
+      ) : errorMovieDetail || errorMovieCast ? (
+        <Text>Something went wrong!</Text>
+      ) : dataMovieDetail.results === undefined ||
+        dataMovieCast.results === undefined ? (
+        <ActivityIndicator size={'large'} color={COLORS.primary} />
+      ) : (
+        <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
+          <View style={{ flexDirection: 'column', flex: 1 }}>
+            <HeaderMovie data={dataMovieDetail.results} />
+            <CastList
+              data={dataMovieCast.results.cast}
+              title={'Cast'}
+              widthCard={150}
+              heightCard={200}
+            />
+          </View>
+        </ScrollView>
+      )}
     </SafeAreaView>
   )
 }

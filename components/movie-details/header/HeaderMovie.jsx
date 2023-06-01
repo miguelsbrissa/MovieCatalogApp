@@ -1,8 +1,7 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
-import { COLORS, FONT, SIZES } from '../../../constants'
+import { COLORS, SIZES } from '../../../constants'
 import { checkImageURL } from '../../../utils'
-import { Feather } from '@expo/vector-icons'
 import styles from './headerStyle'
 import IconText from '../../common/iconText/IconText'
 
@@ -17,7 +16,7 @@ const HeaderMovie = ({ data }) => {
     synopsisWrapper
   } = styles
   return (
-    <View>
+    <View style={{flex: 1}}>
       <View style={headerWrapper}>
         <Text style={movieTitle}>{data.titleText.text}</Text>
       </View>

@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
   infoWrapper: {
     flexDirection: 'row',
     width: '100%',
-    height: '50%',
+
     margin: SIZES.small
   },
   movieImg: {
-    width: '35%',
-    height: '100%',
+    width: '40%',
+    height: 250,
     borderRadius: SIZES.xxLarge,
     marginRight: SIZES.small
   },
