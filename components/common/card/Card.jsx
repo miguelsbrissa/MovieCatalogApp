@@ -4,12 +4,12 @@ import styles from './cardStyle'
 import { checkImageURL } from '../../../utils/index'
 import { useRouter } from 'expo-router'
 
-const Card = ({ item }) => {
+const Card = ({ item, width, height }) => {
   const { container, movieImg, movieTitle } = styles
   const router = useRouter()
   return (
     <TouchableOpacity
-      style={container}
+      style={container(width, height)}
       onPress={() => router.push(`movie-details/${item.id}`)}
     >
       <Text style={movieTitle} numberOfLines={1}>
