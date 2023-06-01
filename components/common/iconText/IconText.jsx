@@ -15,7 +15,13 @@ const IconText = ({
   return (
     <View style={iconContainer}>
       <Feather name={iconName} size={iconSize} color={iconColor} />
-      <Text style={textStyle(textColor, textSize)}>{text}</Text>
+      <Text
+        style={textStyle(textColor, textSize)}
+        numberOfLines={5}
+        ellipsizeMode="head"
+      >
+        {text}
+      </Text>
     </View>
   )
 }
