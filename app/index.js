@@ -84,6 +84,8 @@ const Home = () => {
             <HorizontalList
               title={'Recommended'}
               data={dataPopularMovies.results}
+              widthCard={200}
+              heightCard={250}
             />
           )}
           <MultiHorizontalList
