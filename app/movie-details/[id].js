@@ -25,6 +25,14 @@ const MovieDetails = () => {
   } = useFetch(`titles/${params.id}`, {
     info: 'extendedCast'
   })
+  const {
+    data: dataMovieCrew,
+    isLoading: isLoadingMovieCrew,
+    //refetch: refetchMovieCrew,
+    error: errorMovieCrew
+  } = useFetch(`titles/${params.id}`, {
+    info: 'creators_directors_writers'
+  })
 
   return (
     <SafeAreaView>
@@ -61,12 +69,16 @@ const MovieDetails = () => {
       ) : errorMovieDetail || errorMovieCast ? (
         <Text>Something went wrong!</Text>
       ) : dataMovieDetail.results === undefined ||
-        dataMovieCast.results === undefined ? (
+        dataMovieCast.results === undefined ||
+        dataMovieCrew.results === undefined ? (
         <ActivityIndicator size={'large'} color={COLORS.primary} />
       ) : (
         <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
           <View style={{ flexDirection: 'column', flex: 1 }}>
-            <HeaderMovie data={dataMovieDetail.results} />
+            <HeaderMovie
+              dataMovie={dataMovieDetail.results}
+              dataCrew={dataMovieCrew.results}
+            />
             <CastList
               data={dataMovieCast.results.cast}
               title={'Cast'}

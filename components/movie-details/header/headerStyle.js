@@ -27,7 +27,10 @@ const styles = StyleSheet.create({
     marginRight: SIZES.small
   },
   movieIconsWrapper: {
-    width: '50%'
+    width: '50%',
+    paddingRight: SIZES.xSmall,
+    flexDirection: 'column',
+    alignContent: 'center'
   },
   synopsisWrapper: {
     margin: SIZES.small
