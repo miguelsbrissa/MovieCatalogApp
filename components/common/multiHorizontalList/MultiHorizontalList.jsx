@@ -54,7 +54,7 @@ const MultiHorizontalList = ({ categories }) => {
           horizontal
           contentContainerStyle={{ columnGap: SIZES.medium }}
           data={dataMovieByCat.results}
-          renderItem={({ item }) => <Card item={item} />}
+          renderItem={({ item }) => <Card item={item} width={200} height={250}/>}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
         />

@@ -14,7 +14,7 @@ const HorizontalList = ({ title, data}) => {
         horizontal
         contentContainerStyle={{ columnGap: SIZES.medium }}
         data={data}
-        renderItem={({ item }) => <Card item={item} />}
+        renderItem={({ item }) => <Card item={item} width={200} height={250}/>}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
       />
