@@ -5,6 +5,8 @@ import MultiHorizontalList from './common/multiHorizontalList/MultiHorizontalLis
 import Card from './common/card/Card'
 import IconText from './common/iconText/IconText'
 import HeaderMovie from './movie-details/header/HeaderMovie'
+import CastList from './movie-details/castList/CastList'
+import CastCard from './movie-details/castCard/CastCard'
 
 export {
   Welcome,
@@ -13,5 +15,7 @@ export {
   MultiHorizontalList,
   Card,
   IconText,
-  HeaderMovie
+  HeaderMovie,
+  CastList,
+  CastCard
 }
