@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import {
   View,
   Text,
@@ -11,7 +11,7 @@ import Card from '../card/Card'
 import { COLORS, SIZES } from '../../../constants'
 import useFetch from '../../../hooks/useFetch'
 
-const MultiHorizontalList = ({ categories }) => {
+const MultiHorizontalList = ({ categories, widthCard, heightCard }) => {
   const { container, catMovieName } = styles
   const [activeMovieCat, setActiveMovieCat] = useState(categories[0])
   const {
@@ -54,7 +54,9 @@ const MultiHorizontalList = ({ categories }) => {
           horizontal
           contentContainerStyle={{ columnGap: SIZES.medium }}
           data={dataMovieByCat.results}
-          renderItem={({ item }) => <Card item={item} width={200} height={250}/>}
+          renderItem={({ item }) => (
+            <Card item={item} width={widthCard} height={heightCard} />
+          )}
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item.id}
         />

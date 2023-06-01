@@ -86,7 +86,11 @@ const Home = () => {
               data={dataPopularMovies.results}
             />
           )}
-          <MultiHorizontalList categories={catMovies} />
+          <MultiHorizontalList
+            categories={catMovies}
+            widthCard={200}
+            heightCard={250}
+          />
           {isLoadingUpcomingMovies ? (
             <ActivityIndicator size={'large'} color={COLORS.primary} />
           ) : errorUpcomingMovies ? (
@@ -95,6 +99,8 @@ const Home = () => {
             <HorizontalList
               title={'Upcomoming'}
               data={dataUpcomingMovies.results}
+              widthCard={200}
+              heightCard={250}
             />
           )}
         </View>

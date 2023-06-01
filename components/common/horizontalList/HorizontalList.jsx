@@ -4,7 +4,7 @@ import Card from '../card/Card'
 import { SIZES } from '../../../constants'
 import styles from './horizontalListStyle'
 
-const HorizontalList = ({ title, data}) => {
+const HorizontalList = ({ title, data, widthCard, heightCard}) => {
   const { container, titleName } = styles
 
   return (
@@ -14,7 +14,7 @@ const HorizontalList = ({ title, data}) => {
         horizontal
         contentContainerStyle={{ columnGap: SIZES.medium }}
         data={data}
-        renderItem={({ item }) => <Card item={item} width={200} height={250}/>}
+        renderItem={({ item }) => <Card item={item} width={widthCard} height={heightCard}/>}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id}
       />
