@@ -6,15 +6,15 @@ import {
   ScrollView,
   ActivityIndicator
 } from 'react-native'
-import { Stack, useRouter } from 'expo-router'
+import { Stack } from 'expo-router'
 import styles from '../styles/style'
 import { COLORS, SIZES } from '../constants'
-import { Feather } from '@expo/vector-icons'
 import {
   Welcome,
   SearchBarHeader,
   HorizontalList,
-  MultiHorizontalList
+  MultiHorizontalList,
+  ButtonIcon
 } from '../components'
 import useFetch from '../hooks/useFetch'
 
@@ -66,7 +66,12 @@ const Home = () => {
           },
           statusBarTranslucent: true,
           headerLeft: () => (
-            <Feather name={'menu'} size={SIZES.xxLarge} color={COLORS.white} />
+            <ButtonIcon
+              iconName={'menu'}
+              iconSize={SIZES.xxLarge}
+              iconColor={COLORS.white}
+              onPress={() => {}}
+            />
           )
         }}
       />

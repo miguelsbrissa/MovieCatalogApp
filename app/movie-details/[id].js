@@ -1,14 +1,20 @@
 import React from 'react'
 import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native'
-import { useSearchParams, Stack } from 'expo-router'
+import { useSearchParams, Stack, useRouter } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
 import { COLORS, SIZES } from '../../constants'
 import useFetch from '../../hooks/useFetch'
-import { CastList, HeaderMovie, SimilarMovieList } from '../../components'
+import {
+  ButtonIcon,
+  CastList,
+  HeaderMovie,
+  SimilarMovieList
+} from '../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 
 const MovieDetails = () => {
   const params = useSearchParams()
+  const router = useRouter()
   const {
     data: dataMovieDetail,
     isLoading: isLoadingMovieDetail,
@@ -49,17 +55,19 @@ const MovieDetails = () => {
           },
           statusBarTranslucent: true,
           headerLeft: () => (
-            <Feather
-              name={'chevron-left'}
-              size={SIZES.xxLarge}
-              color={COLORS.white}
+            <ButtonIcon
+              iconName={'chevron-left'}
+              iconColor={COLORS.white}
+              iconSize={SIZES.xxLarge}
+              onPress={() => router.back()}
             />
           ),
           headerRight: () => (
-            <Feather
-              name={'share-2'}
-              size={SIZES.xxLarge}
-              color={COLORS.white}
+            <ButtonIcon
+              iconName={'share-2'}
+              iconColor={COLORS.white}
+              iconSize={SIZES.xxLarge}
+              onPress={() => {}}
             />
           )
         }}
@@ -74,7 +82,13 @@ const MovieDetails = () => {
         <ActivityIndicator size={'large'} color={COLORS.primary} />
       ) : (
         <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
-          <View style={{ flexDirection: 'column', flex: 1, paddingBottom: SIZES.medium }}>
+          <View
+            style={{
+              flexDirection: 'column',
+              flex: 1,
+              paddingBottom: SIZES.medium
+            }}
+          >
             <HeaderMovie
               dataMovie={dataMovieDetail.results}
               dataCrew={dataMovieCrew.results}
