@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { View, Text, Image } from 'react-native'
 import { COLORS, SIZES } from '../../../constants'
-import { checkImageURL } from '../../../utils'
+import { checkImageURL, convertSecondsToHours } from '../../../utils'
 import styles from './headerStyle'
 import IconText from '../../common/iconText/IconText'
 
@@ -48,7 +48,7 @@ const HeaderMovie = ({ dataMovie, dataCrew }) => {
             iconName={'play-circle'}
             iconColor={COLORS.primary}
             iconSize={SIZES.xLarge}
-            text={dataMovie.runtime.seconds}
+            text={convertSecondsToHours(dataMovie.runtime.seconds)}
             textColor={COLORS.gray3}
             textSize={SIZES.small}
           />
