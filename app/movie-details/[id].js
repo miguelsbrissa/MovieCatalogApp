@@ -4,7 +4,7 @@ import { useSearchParams, Stack } from 'expo-router'
 import { Feather } from '@expo/vector-icons'
 import { COLORS, SIZES } from '../../constants'
 import useFetch from '../../hooks/useFetch'
-import { CastList, HeaderMovie } from '../../components'
+import { CastList, HeaderMovie, SimilarMovieList } from '../../components'
 import { ScrollView } from 'react-native-gesture-handler'
 
 const MovieDetails = () => {
@@ -64,9 +64,9 @@ const MovieDetails = () => {
           )
         }}
       />
-      {isLoadingMovieDetail || isLoadingMovieCast ? (
+      {isLoadingMovieDetail || isLoadingMovieCast || isLoadingMovieCrew ? (
         <ActivityIndicator size={'large'} color={COLORS.primary} />
-      ) : errorMovieDetail || errorMovieCast ? (
+      ) : errorMovieDetail || errorMovieCast || errorMovieCrew ? (
         <Text>Something went wrong!</Text>
       ) : dataMovieDetail.results === undefined ||
         dataMovieCast.results === undefined ||
@@ -74,7 +74,7 @@ const MovieDetails = () => {
         <ActivityIndicator size={'large'} color={COLORS.primary} />
       ) : (
         <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
-          <View style={{ flexDirection: 'column', flex: 1 }}>
+          <View style={{ flexDirection: 'column', flex: 1, paddingBottom: SIZES.medium }}>
             <HeaderMovie
               dataMovie={dataMovieDetail.results}
               dataCrew={dataMovieCrew.results}
@@ -85,6 +85,7 @@ const MovieDetails = () => {
               widthCard={150}
               heightCard={200}
             />
+            <SimilarMovieList originalMovie={dataMovieDetail.results} />
           </View>
         </ScrollView>
       )}
