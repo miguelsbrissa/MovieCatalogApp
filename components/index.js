@@ -7,6 +7,7 @@ import IconText from './common/iconText/IconText'
 import HeaderMovie from './movie-details/header/HeaderMovie'
 import CastList from './movie-details/castList/CastList'
 import CastCard from './movie-details/castCard/CastCard'
+import SimilarMovieList from './movie-details/similarMoviesList/SimilarMovieList'
 
 export {
   Welcome,
@@ -17,5 +18,6 @@ export {
   IconText,
   HeaderMovie,
   CastList,
-  CastCard
+  CastCard,
+  SimilarMovieList
 }
