@@ -16,6 +16,7 @@ const HeaderMovie = ({ dataMovie, dataCrew }) => {
     synopsisWrapper
   } = styles
   const directorName = dataCrew.directors[0].credits[0].name.nameText.text
+  const releaseDate = `${dataMovie.releaseDate.month}/${dataMovie.releaseDate.day}/${dataMovie.releaseDate.year}`
   const writersName = dataCrew.writers[0].credits
     .map((writer) => ` ${writer.name.nameText.text}`)
     .toString()
@@ -65,6 +66,14 @@ const HeaderMovie = ({ dataMovie, dataCrew }) => {
             iconColor={COLORS.primary}
             iconSize={SIZES.xLarge}
             text={`Written by:${writersName}`}
+            textColor={COLORS.gray3}
+            textSize={SIZES.small}
+          />
+          <IconText
+            iconName={'calendar'}
+            iconColor={COLORS.primary}
+            iconSize={SIZES.xLarge}
+            text={`${releaseDate}`}
             textColor={COLORS.gray3}
             textSize={SIZES.small}
           />
