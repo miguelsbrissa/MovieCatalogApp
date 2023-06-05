@@ -1,6 +1,6 @@
 import React from 'react'
 import HorizontalList from '../../common/horizontalList/HorizontalList'
-import { View, Text, ActivityIndicator } from 'react-native'
+import { Text, ActivityIndicator } from 'react-native'
 import useFetch from '../../../hooks/useFetch'
 import { COLORS } from '../../../constants'
 

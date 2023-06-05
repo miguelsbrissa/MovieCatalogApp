@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native'
 import { useSearchParams, Stack, useRouter } from 'expo-router'
-import { Feather } from '@expo/vector-icons'
 import { COLORS, SIZES } from '../../constants'
 import useFetch from '../../hooks/useFetch'
 import {
