@@ -9,6 +9,7 @@ import CastList from './movie-details/castList/CastList'
 import CastCard from './movie-details/castCard/CastCard'
 import SimilarMovieList from './movie-details/similarMoviesList/SimilarMovieList'
 import ButtonIcon from './common/buttonIcon/ButtonIcon'
+import SearchList from './search/searchList/SearchList'
 
 export {
   Welcome,
@@ -21,5 +22,6 @@ export {
   CastList,
   CastCard,
   SimilarMovieList,
-  ButtonIcon
+  ButtonIcon,
+  SearchList
 }
