@@ -71,14 +71,15 @@ const MovieDetails = () => {
           )
         }}
       />
-      {isLoadingMovieDetail || isLoadingMovieCast || isLoadingMovieCrew ? (
+      {isLoadingMovieDetail ||
+      isLoadingMovieCast ||
+      isLoadingMovieCrew ||
+      dataMovieDetail.results === undefined ||
+      dataMovieCast.results === undefined ||
+      dataMovieCrew.results === undefined ? (
         <ActivityIndicator size={'large'} color={COLORS.primary} />
-      ) : errorMovieDetail || errorMovieCast || errorMovieCrew ? (
+      ) : errorMovieDetail && errorMovieCast && errorMovieCrew ? (
         <Text>Something went wrong!</Text>
-      ) : dataMovieDetail.results === undefined ||
-        dataMovieCast.results === undefined ||
-        dataMovieCrew.results === undefined ? (
-        <ActivityIndicator size={'large'} color={COLORS.primary} />
       ) : (
         <ScrollView showsVerticalScrollIndicator={true} scrollEnabled>
           <View

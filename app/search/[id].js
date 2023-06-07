@@ -41,12 +41,10 @@ const Search = () => {
         }}
       />
       <View style={{ marginTop: 20 }}>
-        {isLoading ? (
+        {isLoading &&  data.results === undefined ? (
           <ActivityIndicator size={'large'} color={COLORS.primary} />
         ) : error ? (
           <Text>Something went wrong!</Text>
-        ) : data.results === undefined ? (
-          <ActivityIndicator size={'large'} color={COLORS.primary} />
         ) : (
           <SearchList data={data.results} />
         )}
