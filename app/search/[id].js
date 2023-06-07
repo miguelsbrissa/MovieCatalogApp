@@ -1,21 +1,13 @@
 import React from 'react'
 import { Stack, useRouter, useSearchParams } from 'expo-router'
-import { View, Text, SafeAreaView, ActivityIndicator } from 'react-native'
+import { View, SafeAreaView } from 'react-native'
 import { COLORS, SIZES } from '../../constants'
 import { ButtonIcon, SearchList } from '../../components'
-import useFetch from '../../hooks/useFetch'
 
 const Search = () => {
   const params = useSearchParams()
   const router = useRouter()
-  const { data, error, isLoading } = useFetch(
-    `titles/search/title/${params.id}`,
-    {
-      exact: 'false',
-      titleType: 'movie',
-      list: 'most_pop_movies'
-    }
-  )
+
   return (
     <SafeAreaView>
       <Stack.Screen
@@ -41,13 +33,7 @@ const Search = () => {
         }}
       />
       <View style={{ marginTop: 20 }}>
-        {isLoading &&  data.results === undefined ? (
-          <ActivityIndicator size={'large'} color={COLORS.primary} />
-        ) : error ? (
-          <Text>Something went wrong!</Text>
-        ) : (
-          <SearchList data={data.results} />
-        )}
+        <SearchList searchTerm={params.id} />
       </View>
     </SafeAreaView>
   )
