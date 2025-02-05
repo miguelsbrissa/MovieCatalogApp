@@ -19,7 +19,7 @@ const SearchList = ({ searchTerm }) => {
   if (dataMovieSearch.results === undefined && isLoadingMovieSearch) {
     return <ActivityIndicator size={'large'} color={COLORS.primary} />
   } else if (errorMovieSearch) {
-    return <Text>Something went wrong!</Text>
+    return <Text>Something went wrong!!!</Text>
   } else {
     return (
       <View style={container}>
